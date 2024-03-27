@@ -1,0 +1,31 @@
+class BSTWithNumberOfNonLeaves<E> extends BST<E> {
+  /** Create a default BST with a natural order comparator */
+  public BSTWithNumberOfNonLeaves() {
+    super();
+  }
+
+  /** Create a BST with a specified comparator */
+  public BSTWithNumberOfNonLeaves(java.util.Comparator<E> c) {
+    super(c); 
+  }
+
+  /** Create a binary tree from an array of objects */
+  public BSTWithNumberOfNonLeaves(E[] objects) {
+    super(objects);
+  }	
+  
+  public int getNumberOfNonLeaves() {            
+    return getNumberOfNonLeaves(root);
+  }
+  
+  /** Returns the number of non-leaf nodes */
+  private int getNumberOfNonLeaves(TreeNode<E> root) {     
+    if (root == null)
+      return 0;
+    else if (root.left != null || root.right != null)
+      return 1 + getNumberOfNonLeaves(root.left) 
+        + getNumberOfNonLeaves(root.right);
+    else 
+      return 0;
+  }
+}

@@ -1,0 +1,32 @@
+class BSTWithHeight<E> extends BST<E> {
+  /** Create a default BST with a natural order comparator */
+  public BSTWithHeight() {
+    super();
+  }
+
+  /** Create a BST with a specified comparator */
+  public BSTWithHeight(java.util.Comparator<E> c) {
+    super(c); 
+  }
+
+  /** Create a binary tree from an array of objects */
+  public BSTWithHeight(E[] objects) {
+    super(objects);
+  }	
+  
+  /**
+   * Returns the height of this binary tree. 
+   */
+  public int height() {
+    return height(root);
+  }
+
+  private int height(TreeNode<E> root) {
+    if (root == null) {
+      return -1;
+    } 
+    else {
+      return 1 + Math.max(height(root.left), height(root.right));
+    }
+  }
+}
